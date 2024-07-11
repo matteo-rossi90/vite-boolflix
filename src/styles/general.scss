@@ -9,15 +9,29 @@
     font-family: 'Roboto', Arial;
 }
 
-.container-padding{
+.container{
     padding: 10px;
+    width: 90%;
+    margin: 0 auto;
 }
 
-.box-container{
+body{
     background-color: rgba(0,0,0,0.6);
-    height: 700px;
 }
 
 ul li{
     list-style-type: none;
+    padding: 5px 0;
+}
+
+.cards{
+    height: 300px;
+        width: calc(100% / 5 - 20px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    text-align: center;
+    border: 1px dashed white;
+    overflow-y: auto;
 }

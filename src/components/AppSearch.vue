@@ -1,14 +1,20 @@
 <script>
-export default{
-    name:'AppSearch'
-}
+
+export default {
+  name: 'AppSearch',
+  data() {
+    return {
+      query: ''
+    }
+  }
+};
 </script>
 
 <template>
-    <form action="#">
-        <input type="text" placeholder="Cerca">
-        <button>Cerca</button>
-    </form>
+  <div class="search-bar">
+    <input type="text" v-model="query" placeholder="Search movies and series...">
+    <button @click.prevent="$emit('search-query', query)">Cerca</button>
+  </div>
 </template>
 
 <style scoped lang="scss">
@@ -16,10 +22,20 @@ export default{
 @use '../styles/partials/mixins' as*;
 @use '../styles/partials/variables' as*;
 
+.search-bar {
+  font-size: 16px;
 
+  input,
+  button{
+    padding: 5px 10px;
+  }
 
-#search{
-    color: $text
+  button{
+    background-color: $main;
+    border: $main;
+    color: $text;
+    cursor:pointer;
+  }
 }
 
 </style>

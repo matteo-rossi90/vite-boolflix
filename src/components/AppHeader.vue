@@ -1,37 +1,32 @@
 <script>
-import AppSearch from './AppSearch.vue'
+import AppSearch from './AppSearch.vue';
 
-// //importare axios
-// import axios from 'axios';
-
-// //importare lo store
-// import store from '../store.js'
-
-export default{
-    name:'AppHeader',
-    components:{
-        AppSearch
-    },
-    // data(){
-        // return{
-            // store
-        // }
-    // }
-
-}
+export default {
+  name: 'AppHeader',
+  components: {
+    AppSearch
+  },
+  methods: {
+    handleSearch(query) {
+      this.$emit('searchQuery', query);
+    }
+  }
+};
 </script>
 
 <template>
-    <header class="container-padding">
+  <header>
+    <div class="container flex-container">
         <div id="logo">
             <h1>Boolflix</h1>
         </div>
-        <div id="search">
-            <AppSearch/>
+        
+        <AppSearch @searchQuery="handleSearch"/>
+        
 
-        </div>
-    </header>
-
+    </div>
+    
+  </header>
 </template>
 
 <style scoped lang="scss">
@@ -42,16 +37,14 @@ export default{
 header{
     height: 60px;
     background-color: $primary;
-    @include flexbox();
 
-    #logo{
-        text-transform:uppercase;
-        color: $main;
+    .flex-container{
+        @include flexbox();
+        #logo{
+            text-transform:uppercase;
+            color: $main;
+        }
     }
 
-    #search{
-        color: $text
-    }
 }
-
 </style>
