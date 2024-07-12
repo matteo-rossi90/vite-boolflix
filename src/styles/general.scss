@@ -22,25 +22,25 @@ body{
 ul li{
     list-style-type: none;
     padding: 5px 0;
+    color: white;
 }
 
 .cards{
-    height: 300px;
-        width: calc(100% / 5 - 20px);
+    width: calc(100% / 5 - 20px);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 10px;
     text-align: center;
-    border: 1px dashed white;
-    overflow-y: auto;
 }
 
-.default {
-    background-image: url('path/to/default-flag.png');
-    width: 20px;
-    height: 15px;
-    display: inline-block;
-    background-size: contain;
-    background-repeat: no-repeat;
+span{
+    padding: 0 10px;
+}
+
+.image img{
+    max-width: 100%;
+    object-fit: cover;
+    object-position: center;
 }

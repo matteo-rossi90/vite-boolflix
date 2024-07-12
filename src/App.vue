@@ -57,4 +57,6 @@ export default {
 
 <style lang="scss">
 @use './styles/general.scss';
+@use '@fortawesome/fontawesome-free/css/all.min.css';
+
 </style>
