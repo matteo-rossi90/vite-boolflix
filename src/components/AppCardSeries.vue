@@ -1,7 +1,13 @@
 <script>
+import { getFlagCode } from '../flagUtils';
+
 export default {
   name: 'AppCardSeries',
-  props: ['series']
+  props: ['series'],
+    methods:{
+      getFlagCode
+  }
+
 };
 </script>
 
@@ -10,7 +16,9 @@ export default {
     <ul>
       <li>{{ serie.name }}</li>
       <li>{{ serie.original_name }}</li>
-      <li>{{ serie.original_language }}</li>
+      <li>
+        <span :class="`fi fi-${getFlagCode(serie.original_language)}`"></span>
+      </li>
       <li>{{ serie.vote_average }}</li>
     </ul>
   </div>

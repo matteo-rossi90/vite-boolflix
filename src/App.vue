@@ -48,11 +48,11 @@ export default {
 
 <template>
 
-    <AppHeader @search-query="handleSearch"/>
+    <AppHeader @searchQuery="handleSearch"/>
     <main>
       <AppMain :movies="store.movies" :series="store.series"/>
     </main>
-    
+
 </template>
 
 <style lang="scss">

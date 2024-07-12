@@ -1,7 +1,13 @@
 <script>
+import { getFlagCode } from '../flagUtils';
+
 export default {
   name: 'AppCardMovies',
-  props: ['movies']
+  props: ['movies'],
+  methods:{
+    getFlagCode
+  }
+
 };
 </script>
 
@@ -10,7 +16,9 @@ export default {
     <ul>
       <li>{{ movie.title }}</li>
       <li>{{ movie.original_title }}</li>
-      <li>{{ movie.original_language }}</li>
+      <li>
+        <span :class="`fi fi-${getFlagCode(movie.original_language)}`"></span>
+      </li>
       <li>{{ movie.vote_average }}</li>
     </ul>
   </div>

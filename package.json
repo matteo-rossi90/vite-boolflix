@@ -11,6 +11,7 @@
   "dependencies": {
     "@fontsource/roboto": "^5.0.13",
     "axios": "^1.7.2",
+    "flag-icons": "^7.2.3",
     "vue": "^3.4.29"
   },
   "devDependencies": {

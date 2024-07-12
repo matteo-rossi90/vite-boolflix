@@ -35,3 +35,12 @@ ul li{
     border: 1px dashed white;
     overflow-y: auto;
 }
+
+.default {
+    background-image: url('path/to/default-flag.png');
+    width: 20px;
+    height: 15px;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+}

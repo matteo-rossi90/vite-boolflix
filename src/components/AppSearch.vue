@@ -6,14 +6,23 @@ export default {
     return {
       query: ''
     }
+  },
+  methods:{
+    search() {
+      this.$emit('searchQuery', this.query);
+    },
+    resetSearch(){
+      this.query = '',
+      this.$emit('searchQuery', this.query);
+    }
   }
 };
 </script>
 
 <template>
   <div class="search-bar">
-    <input type="text" v-model="query" placeholder="Search movies and series...">
-    <button @click.prevent="$emit('search-query', query)">Cerca</button>
+    <input type="text" v-model="query" @input="search" placeholder="Cerca serie TV o film">
+    <button @click.prevent="resetSearch">Annulla</button>
   </div>
 </template>
 
@@ -24,6 +33,11 @@ export default {
 
 .search-bar {
   font-size: 16px;
+  width: 30%;
+
+  input{
+    width: 80%;
+  }
 
   input,
   button{
