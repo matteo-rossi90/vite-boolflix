@@ -7,7 +7,7 @@ export default {
   name: 'AppCardMovies',
   props: ['movies'],
     methods:{
-      getFlagCode, //funzione che permette di convertire il codice della lingua originale nella bandiera del paese
+      getFlagCode, //funzione che permette di convertire il codice della lingua originale nella bandiera del paese in base a condizioni
       convertToFiveScale, //funzione che converte una scala di dieci numeri in una scala di cinque numeri
       starRating //funzione che converte il punteggio da numeri a stelle
     }
@@ -32,9 +32,15 @@ export default {
       <li>{{ movie.title }}</li>
       <li>{{ movie.original_title }}</li>
       <li>
-        <span v-if="getFlagCode(movie.original_language) !== movie.original_language"
-          :class="`fi fi-${getFlagCode(movie.original_language)}`">
+
+        <!-- se il codice della lingua in originale in API corrisponde alle lingue associate alle bandiere
+        il sistema restituirà sempre la bandiera dello stato in cui si parla quella lingua -->
+        <span v-if="getFlagCode(movie.original_language).hasFlag">
+          <span :class="getFlagCode(movie.original_language).flag"></span>
         </span>
+
+        <!-- se non c'è corrispondenza tra il codice e l'elenco delle lingue con bandiere,
+        in pagina sarà stampato direttamente il codice come presentato nella API -->
         <span v-else>
           {{ movie.original_language }}
         </span>
