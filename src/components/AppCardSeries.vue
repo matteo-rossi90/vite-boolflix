@@ -16,39 +16,73 @@ export default {
 </script>
 
 <template>
-  <div class="cards" v-for="(serie, index) in series" :key="index">
-    <!-- placeholder da mettere come immagine se nel link non dovesse esserci la locandina della serie TV -->
-    <div class="image" v-if="(!serie.poster_path)">
-      <img :src="`no_image.jpg`">
+
+  <div class="container my-4">
+
+    <div class="row container-row">
+
+      <!-- estrapolazione delle serie TV dall'API corrispondente -->
+      <div class="col-12 col-sm-6 col-md-6 col-lg-3 col mb-4" v-for="(serie, index) in series" :key="index">
+
+        <div class="card no-border h-100">
+
+          <div class="card-inner no-border">
+
+            <!-- Fronte della card -->
+            <div class="card-front no-border p-0">
+
+              <!-- Placeholder da mettere come immagine se nel link non dovesse esserci l'anteprima delle serie -->
+              <div class="image no-border" v-if="!serie.poster_path">
+                <img :src="`no_image.jpg`" class="card-img-top">
+              </div>
+
+              <!-- Immagine locandina delle serie estrapolata dall'API -->
+              <div class="image no-border" v-else>
+                <img :src="`https://image.tmdb.org/t/p/w342${serie.poster_path}`">
+              </div>
+
+            </div>
+
+            <!-- Retro della card -->
+            <div class="card-back card-body p-2 text-center text-white bg-dark">
+
+              <!-- Elenco delle informazioni sulle serie TV -->
+              <ul class="list-unstyled">
+                <li>{{ serie.name }}</li>
+                <li>{{ serie.original_name }}</li>
+                <li>
+
+                  <!-- Se il codice della lingua in originale in API corrisponde alle lingue associate alle bandiere,
+                  il sistema restituirà sempre la bandiera dello stato in cui si parla quella lingua -->
+                  <span v-if="getFlagCode(serie.original_language).hasFlag">
+                    <span :class="getFlagCode(serie.original_language).flag"></span>
+                  </span>
+
+                  <!-- Se non c'è corrispondenza tra il codice e l'elenco delle lingue con bandiere,
+                  in pagina sarà stampato direttamente il codice come presentato nella API -->
+                  <span v-else>
+                    {{ serie.original_language }}
+                  </span>
+
+                </li>
+
+                <!-- rating e voto -->
+                <li v-html="starRating(convertToFiveScale(serie.vote_average))"></li>
+              </ul>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
 
-    <!-- immagine locandina della serie TV estrapolata dall'API -->
-    <div class="image" v-else>
-      <img :src="`https://image.tmdb.org/t/p/w342${serie.poster_path}`">
-    </div>
-
-    <!-- elenco delle informazioni sul serie TV -->
-    <ul>
-      <li>{{ serie.name }}</li>
-      <li>{{ serie.original_name }}</li>
-      <li>
-
-        <!-- se il codice della lingua in originale in API corrisponde alle lingue associate alle bandiere
-         il sistema restituirà sempre la bandiera dello stato in cui si parla quella lingua -->
-        <span v-if="getFlagCode(serie.original_language).hasFlag">
-          <span :class="getFlagCode(serie.original_language).flag"></span>
-        </span>
-
-        <!-- se non c'è corrispondenza tra il codice e l'elenco delle lingue con bandiere,
-         in pagina sarà stampato direttamente il codice come presentato nella API -->
-        <span v-else>
-          {{ serie.original_language }}
-        </span>
-      </li>
-      <li v-html="starRating(convertToFiveScale(serie.vote_average))"></li>
-    </ul>
   </div>
 </template>
+
 
 <style scoped lang="scss">
 @use '../styles/partials/mixins' as*;

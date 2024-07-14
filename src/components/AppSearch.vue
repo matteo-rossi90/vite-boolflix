@@ -51,4 +51,35 @@ export default {
   }
 }
 
+@media (max-width: 1400px) {
+  
+  .search-bar{
+
+    width: 40%;
+   
+  }
+}
+
+@media (max-width: 992px) {
+  
+  .search-bar{
+
+    width: 60%;
+   
+  }
+}
+
+@media (max-width: 768px) {
+  
+  .search-bar{
+
+    width: 50%;
+
+    input{
+      width: 70%;
+    }
+   
+  }
+}
+
 </style>

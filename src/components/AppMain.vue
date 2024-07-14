@@ -16,18 +16,17 @@ export default {
 </script>
 
 <template>
-  <div class="box-container">
-    <div class="box-card container">
-        <h2>Film</h2>
-      <div class="box-content">
-        <AppCardMovies :movies="movies"/>
-      </div>
+  
+  <div class="container">
+      <h2>Film</h2>
+    
+      <AppCardMovies :movies="movies"/>
+    
       <h2>Serie</h2>
-      <div class="box-content">
-        <AppCardSeries :series="series"/>
-      </div>
-    </div>
+    
+      <AppCardSeries :series="series"/>
   </div>
+
 </template>
 
 <style scoped lang="scss">
@@ -36,12 +35,8 @@ export default {
 @use '../styles/partials/variables' as*;
 
 h2{
-  margin: 10px 0;
+  margin: 20px 0;
+  color: $text;
 }
 
-.box-content {
-  @include flexbox(start);
-  flex-wrap: wrap;
-
-}
 </style>

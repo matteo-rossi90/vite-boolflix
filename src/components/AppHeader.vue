@@ -16,14 +16,13 @@ export default {
 
 <template>
   <header>
-    <div class="container flex-container">
-        <div id="logo">
-            <h1>Boolflix</h1>
-        </div>
-        
-        <AppSearch @searchQuery="handleSearch"/>
-        
-
+    <div class="container d-flex justify-content-between">
+      <div id="logo">
+          <h1>Boolflix</h1>
+      </div>
+      
+      <AppSearch @searchQuery="handleSearch"/>
+    
     </div>
     
   </header>
@@ -35,16 +34,16 @@ export default {
 @use '../styles/partials/variables' as*;
 
 header{
-    height: 60px;
+    height: 65px;
     background-color: $primary;
+    padding: 10px;
 
-    .flex-container{
-        @include flexbox();
-        #logo{
-            text-transform:uppercase;
-            color: $main;
-        }
+    #logo{
+        text-transform:uppercase;
+        color: $main;
+        font-weight: bold
     }
+  }
 
-}
+
 </style>

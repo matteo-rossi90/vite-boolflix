@@ -47,7 +47,7 @@ export function getFlagCode(language) {
 
 //funzione che converte una scala numerica di 10 numeri a un massimo di 5 numeri
 export function convertToFiveScale(value) {
-    return Math.round((value - 1) / 2) + 1;
+    return Math.round((value - 1) / 2);
 }
 
 // funzione che genera il markup per il rating delle stelle
