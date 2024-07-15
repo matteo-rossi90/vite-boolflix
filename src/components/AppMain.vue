@@ -11,6 +11,17 @@ export default {
   props: {
     movies: Array,
     series: Array
+  },
+  computed: {
+    hasMovies() {
+      return this.movies && this.movies.length > 0;
+    },
+    hasSeries() {
+      return this.series && this.series.length > 0;
+    },
+    hasResults() {
+      return this.hasMovies || this.hasSeries;
+    }
   }
 };
 </script>
@@ -18,13 +29,18 @@ export default {
 <template>
   
   <div class="container">
-      <h2>Film</h2>
+      <h2 v-if="!hasResults">Cosa vuoi guardare oggi?</h2>
+
+      <div v-if="hasMovies">
+        <h2 >Film</h2>
+        <AppCardMovies :movies="movies"/>
+      </div>  
     
-      <AppCardMovies :movies="movies"/>
-    
-      <h2>Serie</h2>
-    
-      <AppCardSeries :series="series"/>
+      <div v-if="hasSeries">
+        <h2>Serie</h2>
+        <AppCardSeries :series="series"/>
+      </div>
+       
   </div>
 
 </template>
