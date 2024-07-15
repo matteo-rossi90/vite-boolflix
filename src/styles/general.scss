@@ -13,16 +13,26 @@ body {
     background-color: rgba(0, 0, 0, 0.7);
 }
 
+.card-back ul{
+    text-align:left;
+    font-size: 12px;
+}
+
 ul li {
     list-style-type: none;
-    padding: 5px 0;
+    padding: 3px 0;
     color: white;
+}
+
+strong{
+    color: red;
 }
 
 .container-row{
     height: 100%;
 }
 
+//gestione delle cards
 .cards-container {
     display: flex;
     flex-wrap: wrap;
@@ -43,8 +53,6 @@ ul li {
     backface-visibility: hidden;
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
     transition: transform 0.6s;
 }
 
@@ -54,15 +62,19 @@ ul li {
     background-color: transparent;
 }
 
+//retro delle card
 .card-back {
     background-color: black;
     transform: rotateY(180deg);
+    overflow-y: auto;
 }
 
+//retro delle card che ruotano all'hover
 .card:hover .card-inner .card-front {
     transform: rotateY(180deg);
 }
 
+//fronte della card che ritorna nella posizione originale
 .card:hover .card-inner .card-back {
     transform: rotateY(0deg);
 }
@@ -84,23 +96,6 @@ ul li {
     border: none;
     border-radius: 0;
 }
-
-// .row.no-gutters {
-    // margin-right: 0;
-    // margin-left: 0;
-// }
-
-// .row.no-gutters>[class*='col-'] {
-    // padding-right: 0;
-    // padding-left: 0;
-// }
-
-// @media (min-width: 1200px) {
-    // .col {
-        // flex: 0 0 20%;
-        // max-width: 20%;
-    // }
-// }
 
 
 

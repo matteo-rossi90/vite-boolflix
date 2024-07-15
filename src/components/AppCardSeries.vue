@@ -2,10 +2,18 @@
 //importare la funzioni
 import { getFlagCode, convertToFiveScale, starRating } from '../functions';
 
+//importare lo store
+import { store } from '../store.js';
+
 
 export default {
   name: 'AppCardSeries',
   props: ['series'],
+  data(){
+    return{
+      store
+    }
+  },
     methods:{
       getFlagCode, //funzione che permette di convertire il codice della lingua originale nella bandiera del paese in base a condizioni
       convertToFiveScale, //funzione che converte una scala di dieci numeri in una scala di cinque numeri
@@ -48,26 +56,58 @@ export default {
 
               <!-- Elenco delle informazioni sulle serie TV -->
               <ul class="list-unstyled">
-                <li>{{ serie.name }}</li>
-                <li>{{ serie.original_name }}</li>
+                <li>
+                  <strong>Titolo: </strong>
+                  <span>
+                    {{ serie.name }}
+                  </span>
+                </li>
+                <li>
+                   <strong>Titolo originale: </strong>
+                  <span>
+                    {{ serie.original_name }}
+                  </span>
+                </li>
                 <li>
 
                   <!-- Se il codice della lingua in originale in API corrisponde alle lingue associate alle bandiere,
                   il sistema restituirà sempre la bandiera dello stato in cui si parla quella lingua -->
                   <span v-if="getFlagCode(serie.original_language).hasFlag">
+                    <strong>Lingua originale: </strong>
                     <span :class="getFlagCode(serie.original_language).flag"></span>
                   </span>
 
                   <!-- Se non c'è corrispondenza tra il codice e l'elenco delle lingue con bandiere,
                   in pagina sarà stampato direttamente il codice come presentato nella API -->
                   <span v-else>
+                    <strong>Lingua originale: </strong>
                     {{ serie.original_language }}
                   </span>
 
                 </li>
 
                 <!-- rating e voto -->
+                <strong>Voto: </strong>
                 <li v-html="starRating(convertToFiveScale(serie.vote_average))"></li>
+
+                <!-- lista del cast -->
+                <li v-if="serie.cast && serie.cast.length">
+                  <strong>Cast:</strong>
+                  <ul class="list-unstyled">
+                    <li v-for="actor in serie.cast" :key="actor.id">{{ actor.name }}</li>
+                  </ul>
+                </li>
+
+                <!-- elenco generi -->
+                <li v-if="serie.genres && serie.genres.length">
+                  <strong>Generi:</strong>
+                  <ul class="list-unstyled">
+                    <li v-for="(genre, index) in serie.genres" :key="index">
+                      <span>Genere {{ index + 1 }}: {{ genre.name }}</span>
+                    </li>
+                  </ul>
+                </li>
+
               </ul>
 
             </div>
