@@ -1,3 +1,4 @@
 Boolflix. Progetto nato con l'intento di replicare il template e le funzioni principali di Netflix. L'applicazione, realizzata in Vue.js, utilizza i dati dall'API di The Movie Database (TMDB) e permette a qualsiasi utente di trovare i film o le serie che desidera attraverso una barra di ricerca. Una volta effettuata la ricerca, i film e le serie ottenute si presentano sotto forma di una sequenza di immagini. 
 Puntando il cursore sul film o sulla serie scelta, un'animazione mostrerà le informazioni relative a titolo, titolo originale, votazione, lingua in cui è disponibile il film, lingua originale e cast. L'applicazione si adatta anche a tablet e smartphone. 
+
 Boolflix è stata realizzata non solo per sperimentare l'importo delle API esterne attravero la libreria Axios e il popolamento dinamico dei dati, ma anche per approfondire l'utilizzo di JavaScript nella creazione di nuove funzioni volte a modificare gli aspetti della propria pagina HTML.
