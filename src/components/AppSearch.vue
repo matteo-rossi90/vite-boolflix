@@ -20,7 +20,7 @@ export default {
 </script>
 
 <template>
-  <div class="search-bar">
+  <div class="search-bar d-flex justify-content-end align-items-center">
     <input type="text" v-model="query" @input="search" placeholder="Cerca serie TV o film">
     <button @click.prevent="resetSearch">Annulla</button>
   </div>
@@ -32,7 +32,7 @@ export default {
 
 .search-bar {
   font-size: 16px;
-  width: 30%;
+  width: 100%;
 
   input{
     width: 80%;
@@ -73,10 +73,10 @@ export default {
   
   .search-bar{
 
-    width: 50%;
+    width: 80%;
 
     input{
-      width: 70%;
+      width: 60%;
     }
    
   }

@@ -16,9 +16,12 @@ export default {
 
 <template>
   <header>
-    <div class="container d-flex justify-content-between">
+    <div class="container d-flex justify-content-between align-items-center gap-5">
       <div id="logo">
           <h1>Boolflix</h1>
+      </div>
+      <div class="display-logo">
+          <h1>B</h1>
       </div>
       
       <AppSearch @searchQuery="handleSearch"/>
@@ -38,10 +41,24 @@ header{
     background-color: $primary;
     padding: 10px;
 
+    .display-logo{
+      display:none;
+    }
+
     #logo{
         text-transform:uppercase;
         color: $main;
         font-weight: bold
+    }
+
+    @media (max-width: 768px){
+      #logo{
+        display: none;
+      }
+      .display-logo{
+        display:block;
+        color: $main;
+      }
     }
   }
 
